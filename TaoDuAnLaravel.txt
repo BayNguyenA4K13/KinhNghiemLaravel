@@ -1,0 +1,429 @@
+﻿composer create-project --prefer-dist laravel/laravel blog
+
+php artisan make:controller Auth\AuthController
+
+php artisan make:middleware RoleMiddleware
+
+Route::namespace('Public')->group(function(){
+	
+});
+
+---------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^storage/ - [L]
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+-------------------------------------------
+
+Route::pattern('id', '([0-9]*)');
+Route::pattern('cid', '([0-9]*)');
+Route::pattern('slug', '(.*)');
+
+
+----------------------------------------------
+echo '<pre>';
+print_r($maMauNen);
+echo '</pre>';
+	die();
+
+
+-------------------------------------------------------------------Nguyen tac quan li User
+không cho xóa Admin, chỉ cho sửa Admin nêu chính chủ Admin đăng nhập (cho sửa cả field username nhé)
+
+-------------------------------------------------------------------Sử dụng href va Phan Trang  thuong xuyen
+{{route('music.cat.add')}}
+
+{{$objSongs->links()}}
+
+
+
+
+--------------------------------------------------------------------Su dung , chen Request vao Controller
+use App\Http\Requests\ContactRequest;
+
+
+
+
+--------------------------------------------------------------------Edit  RomType  Request
+//use Illuminate\Validation\Rule;
+
+        $tnameOld = $this->tnameOld;
+        //dd($tnameOld);
+        return [
+            'tname'=>[
+                'required',
+                Rule::unique('room_type', 'tname')->ignore($tnameOld, 'tname'), 
+            ],
+        ];
+
+
+  //Nang cao
+            'property_name'=>[
+                'required',
+                Rule::unique('property', 'property_name')->ignore($property_nameOld, 'property_name')->where(function ($query) use ($request) {
+                    return $query->where('parent_id', $request->parent_idOld);
+                }),
+
+            ],
+
+//Bien form trong View
+<input type="hidden" name="tnameOld" value="{{ $objItem_RoomType->tname }}">
+
+
+--------------------------------------------------------------------Style CSS pahn trang
+<style type="text/css" media="screen">
+   .pagination li {
+	display: inline;
+    }	
+</style>
+
+
+
+--------------------------------------------------------------------Code mẫu
+@php
+  	$title = $story->name;
+	$preview = $story->preview_text;
+	$id = $story->story_id;
+	$slug = str_slug($title);
+	$url = route('lbstory2.story.detail', ['slug'=>$slug, 'id'=>$id]);
+	$dem = $dem +1;
+  @endphp
+
+
+
+--------------------------------------------------------------------Sử dụng Model mẫu thường xuyên
+    use Illuminate\Support\Facades\DB;
+
+
+    protected $table = "news";
+    protected $primaryKey = "id_news";
+    public $timestamps = false;
+
+    public function getAllItems(){
+    	return $this->all();
+    }
+
+   //trog Controller su dung Model ==>Ham khoi tao
+   use App\Cat;
+    public function __construct(Project $mProject){
+		$this->mProject = $mProject;
+	}
+
+
+
+-----------------------------------------------------------------code Upload ảnh
+use Illuminate\Support\Facades\Storage;
+
+$new_filename = '';
+if($request->file('hinhanh')!= NULL){
+	$path = $request->file('hinhanh')->store('files');
+	$tmp = explode('/', $path);
+	$new_filename = end($tmp);
+}
+
+
+
+-----------------------------------------------------------------code Xoa Unlink anh
+$old_file_path = storage_path('app/files/'.$objItem_Room->picture);
+if(file_exists($old_file_path)){
+    unlink($old_file_path);
+}
+
+@php
+$filePath = storage_path('app/files/'.$objItem_Room->picture);
+@endphp
+@if(file_exists($filePath))
+    <img style="" src="{{$stoUrl}}{{$picture}}" width="100" height="80" />
+@endif
+
+
+
+
+----------------------------------------------------------------Hiển thị erorr validate
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
+---------------------------------------------------------------Su dung in ra MSG thuong xuyen
+@if(Session::has('msg'))
+    <p class="msg">{{Session::get('msg')}}</p>
+    @endif
+
+
+MSGType
+ @if(Session::has('msg'))
+                @php
+                $msg = Session::get('msg');
+                $msg = trim($msg);
+                $msgType = substr($msg, 0, 5);
+                @endphp
+                @if($msgType=='error' || $msgType=='Error')
+                <p class="msg_err">{{Session::get('msg')}}</p>
+                @else
+                 <p class="msg">{{Session::get('msg')}}</p>
+                @endif
+            @endif		
+
+{{csrf_field()}}
+
+
+---------------------------------------------------------------Su dung Old Value Form thuonf xuyen
+
+{{ old('tendanhmuc', old('tendanhmuc') ? old('tendanhmuc') : $typeCompact->tname) }}
+
+value="{{ old('tendanhmuc') }}"
+
+---------------------------------------------------------------Su dung Redirect() trong Controller thuong xuyen
+        $msg = '';
+    	if() $msg = 'Thêm thành công!'; 
+        else $msg = 'Có lỗi xảy ra!';
+        return redirect()->route('admin.roomtype.index')->with('msg', $msg);
+
+        //Báo lỗi Item bị null
+    	if($item == null) return view('errors.404'); 
+
+       //Ridirect chỉ kèm error
+       if() return re
+
+--------------------------------------------------------------Dùng View Share thuong xuyen
+use Illuminate\Support\Facades\View;
+use App\Cat;
+
+//boot()
+View::share('CatsProvider', Cat::all());
+
+
+
+
+-------------------------------------------------------------lấy Post Form value thuong xuyen
+$name = trim($request->post('name'));
+$desc = trim($request->post('desc'));
+$detail = trim($request->post('detail'));
+$type = $request->post('type');
+$utility = $request->post('utility');
+
+
+
+-------------------------------------------------------------Foreach thuogn xuyen
+//trong Views
+        @foreach($objItems_Cat as $objItem)
+	@php
+	$name = $objItem->name;
+	$id = $objItem->id;
+	$urlDel = '';
+	$urlEdit = '';
+	@endphp
+
+--------------------------------------------------------------Onclick Confirm
+onclick="return confirm('Bạn chắc chắn không?')"
+
+
+-------------------------------------------------------------Xoa anh Unlink anh cách 2
+Use Fadecs/Stprage
+
+Storage::delete('files/'.$ten_anh);
+
+
+-------------------------------------------------------------Validate Username, password Request
+//Edit 
+public function rules()
+    {
+        $usernameOld = $this->usernameOld;
+        return [
+            'username'=>[
+                'required',
+                'regex:/^[a-z A-Z 0-9]{4,50}$/',
+                Rule::unique('users', 'username')->ignore($usernameOld, 'username'), 
+            ],
+            'password'=>'nullable|regex:/^[a-zA-Z0-9]{4,50}$/',
+            'fullname'=>'required|max:50',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'username.required'=>'Nhập username',
+            'username.regex'=>'Username chứa kí tự đặc biệt hoặc độ dài không hợp lệ',
+            'username.unique'=>'Username đã tồn tại',
+            'password.required'=>'Nhập password',
+            'password.regex'=>'Password chứa kí tự đặc biệt hoặc đọ dài không hợp lệ',
+            'fullname.required'=>'Nhập fullname',
+            'fullname.max'=>'Fullname quá dài(nên dưới 50 kí tự)',
+        ];
+    }
+
+
+//ADD
+public function rules()
+    {
+        return [
+            'username'=>'required|unique:users|regex:/^[a-z A-Z 0-9]{4,50}$/',
+            'password'=>'required|regex:/^[a-zA-Z0-9]{4,50}$/',
+            'fullname'=>'required|max:50',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'username.required'=>'Nhập username',
+            'username.regex'=>'Username chứa kí tự đặc biệt hoặc độ dài không hợp lệ',
+            'username.unique'=>'Username đã tồn tại',
+            'password.required'=>'Nhập password',
+            'password.regex'=>'Password chứa kí tự đặc biệt hoặc đọ dài không hợp lệ',
+            'fullname.required'=>'Nhập fullname',
+            'fullname.max'=>'Fullname quá dài(nên dưới 50 kí tự)',
+        ];
+    }
+
+
+
+
+
+-------------------------------------------------------------Code Controller Authentication, kiem tra user, password
+//->middleware('auth')
+//Torng Exception\Handel, co thể sửa lại route mặc đinh: route('/login')  ===> route('auth.auth.login)
+
+//Controller Auth
+
+class AuthController extends Controller
+{
+    public function getLogin(){
+    	return view('auth.auth.login');
+    }
+
+    public function postLogin(Request $request){
+    	$username =trim($request->username);
+    	$password = trim($request->password);
+
+    	if(Auth::attempt(['username'=>$username, 'password'=>$password])){
+    		return redirect()->route('admin.index.index');
+    	}
+
+    	return redirect()->route('auth.auth.login')->with('msg', 'Sai username hoặc mật khẩu');
+    }
+}
+
+
+-------------------------------------------------------------Code Logout
+
+
+
+-------------------------------------------------------------Hàm lấy tat ca New theo tung CatId
+//trong model News.php
+   public function getItemsByCatId($cid){
+    	return DB::table('news')->where('id_cat', $cid)->limit(4)->get();
+    }
+
+//trong Controller
+public function news(){
+    	$cats = $this->mCat->getItems();
+    	$arNews = array();
+    	foreach ($cats as $cat) {
+    		$arNews[$cat->id_cat] = $this->mNews->getItemsByCatId($cat->id_cat);
+    	}
+    	return view('aboutme.news.news', compact('cats', 'arNews'));
+    }
+
+//trong Views
+                            @foreach($cats as $cat)
+				@php
+					$name_cat = $cat->name;
+					$id_cat = $cat->id_cat;
+				@endphp
+			<!-- begin block -->
+			<div class="project-wrap">
+
+				<h3 class="title">{!!$name_cat!!}</h3>
+
+				@php
+					$newsByCatId = $arNews[$id_cat] ;
+					$dem = 0;
+				@endphp
+				@foreach($newsByCatId as $news)
+					@php
+					$title = $news->name;
+					$slug = str_slug($title);
+					$id = $news->id_news;
+					$date = $news->date;
+					$preview = $news->preview_text;
+					$picture = $news->picture;
+					$dem = $dem + 1; 
+
+					@endphp
+
+					@if($dem == 1)
+				<div class="project-top">
+					<a href="#"><img src="/storage/app/public/files/news_thumb/{{$picture}}" alt=""></a>
+					<div>
+						<b><a href="{{route('aboutme.news.news_detail', ['slug'=>$slug, 'id'=>$id])}}">{!!$title!!}</a></b> 
+						<small>Ngày đăng: {{$date}}</small>
+						<p class="preview_text">
+							{!!$preview!!}						
+						</p>
+					</div>
+				</div>
+
+              <ul class="article">
+              		@else
+
+					<li>
+						<a href="#"><img src="/storage/app/public/files/news_thumb/{{$picture}}" alt=""></a> <b><a href="{{route('aboutme.news.news_detail', ['slug'=>$slug, 'id'=>$id])}}">{!!$title!!}</a></b> <small>Ngày Đăng: {{$date}}</small>
+						<p>
+							{!!$preview!!}
+						</p>
+						
+					</li>
+					@endif
+					
+					@endforeach
+					
+				</ul>
+				<div class="clr"></div>
+			</div> <!-- end block -->
+			@endforeach
+
+----------------------------------------------------
+
+@extends('lbstory.templates.master')
+@section('title')
+Trang chủ
+@stop
+@section('content')
+<h1 class="title">Đăng nhập</h1>
+		<div class="items-new">
+			<form action="" method="post">
+				<table class="contact">
+					<tr>
+						<td width="40%">Tên đăng nhập: </td>
+						<td>
+							<input type="text" name="username" value="" />
+						</td>
+					</tr>
+					<tr>
+						<td>Mật khẩu: 	</td>
+						<td>
+							<input type="password" name="password" value="" />
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<input type="submit" name="submit" value="Đăng nhập" />
+						</td>
+					</tr>
+				</table>	
+			</form>
+		</div>
+@stop

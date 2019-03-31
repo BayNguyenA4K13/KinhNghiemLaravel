@@ -1,0 +1,19 @@
+
+-----------------------Check a date co phải là 1 ngày trong calendar khong
+if (DateTime::createFromFormat('Y-m-d H:i:s', $myString) !== FALSE) {
+  // it's a date
+}
+
+-----------------------So sanh 2 ngay trong PHP
+// $now = new DateTime();
+$dtA = new DateTime('05/14/2010 3:00PM');
+$dtB = new DateTime('05/14/2010 4:00PM');
+
+if ( $dtA > $dtB ) {
+  echo 'dtA > dtB';
+}
+else {
+  echo 'dtA <= dtB';
+}
+
+

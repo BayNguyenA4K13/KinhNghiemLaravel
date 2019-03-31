@@ -1,0 +1,262 @@
+﻿File nay de giai thich
+
+-------------PHAN 1: LAM XONG GUI LIEN HE CUA LBSTORY DA NHA---
+*Thiet lap form gui lien he: enctry, action={{rote}}
+   co thuoc tinh {{csrf_field()}}
+  
+*Gui form quan trong la co Request
+
+-------------------------------------------------------
+Tạo các hằng số trong .env  ==> nơi khác muốn dùng thì gọi hàm getenv('ten_bien');
+  -ROW_COUNT
+  -ADMIN_URL
+  -PUBLIC_URL
+--------------------------------
+Tạo View::share cần thiết như:
+   -ADMIN-URL (adminUrl)
+   -PUBLIC_URL (publicUrl)
+   -CatsProvider 
+
+-----------------------------------------
+-Du làm gì, cũng cần coi giao diện cững, xem cần đổ ra thông tin gì..
+-Giao diện cứng cho săn bằng php, có ráp giao diện = php thuần:thì cách xử lí:
+    +Xem tổng quan, coi phải cái nào ucg có leftbar hay k
+   chỉ cần chạy demo lên 1 trang index xem thử, nó cắt header từ đâu là đc
+
+-------------------------------------------
+Cần nhớ lệnh SQL, mà có get(), cuối, thường trả về mảng Object,
+nên trường hợp mình muốn lấy số ít. thì thay get() bằng fisrt()
+
+---------------------------------------------
+cái lỗi báo ngu xuẩn: Underfile biến rname;
+Nhưng thực chất là mình @php, nhưng k đóng @endphp
+
+------------------------------------------------
+Thêm 1 lõi ngu xuẩn, là có 2 route giống nhau, trog cùng 1 namesacpe
+  lỗi nhập nhằng, khó báo lỗi ==> nó k chạy đường dẫn luôn
+
+----------------------------------------
+Xem video thư có truyen $tid qua  ca 2 phuogn thuc get va post k nhé
+-------------------------------------------
+
+
+Hãy nhớ về withInput() quan trọng
+----------------------------------------------
+Kiểm tra Trùng tên danh muc có sẵn:
+  theo cách tính count > 0 (ton tai roi), thi k tốt cho việc nhận biết chứ hoa, thường
+-Ma ta nên kiểm  tra thẳng tên của chúng có khác nhau không luôn
+
+---------------------------------------------------
+dùng Prefix cho đường dẫn:
+  ví dụ prefix = 'admin':
+ thì route đường dẫn của index của admin, ta cần khai  báo: get('')  ==> vì ta đã báo prefix là 'admin', nên nó sẽ nối
+    tất cả các route chưa trong nói, bắt đầu = /admin cho chúng ta
+ ==> ví dụ ta khai báo get('')  => thì nó sẽ hiểu là get(/admin)
+           ta khai báo là get('/room') => no se hiêu là get(/admin/room)
+
+------------------------------------------
+Các lôi thường gặp No message:
+ Do ta tạo postAdd function, nhưng chưa tạo route cho nó
+--------------------------------------
+//Trong Request
+unique:users
+
+----------------------------------------------
+
+Học cái vô css, sủa class pagging thành class pagination...theo của laravel hj
+
+
+-----------------
+Public thì k can frex cung dc, vi k co gi cho lam. Admin thoi.
+
+
+
+-----------------
+Đặt tên hàm: Model: hàm nào phục vụ cho Amdin thì có chứ a:  ví dụ: aGetItems
+                    hàm nào phục vụ cho Public thì có chứ p: ví du: pGetItems
+
+Đặt tên biến trong Controller: nếu 1 hàm mà có nhiều biến $objItems,
+   mà phải kahi báo nhiều kiểm Item thì nên: nếu kiểu Item là Room:  => $objItems_Room
+                                             nếu kiểu Item là Utility => $objItem_Utility
+
+
+
+-----------------
+Khi làm admin cho 1 Thể loại thì mở ít nhất là: Model, Controller, Request(neu có)
+
+
+-----------------
+Môi chức năng them, sua , xoa, thì hoàn thành chức năng chính đã.  Các Exception để lại test kí hơn sau
+
+
+-----------------
+Trong Route chỉ cần 1 biến id, thôi là đc, k cần cid làm chi nữa
+
+
+
+-----------------
+Khi return View, thì không cần biến URL, kèm theo (Điển hình như return view trong getEdit())
+NHưng khi redirect()->route, thi bat buộc phải kèm biến URL (Điển hình như return redirect() trong postEdit())
+
+
+
+-----------------
+Chưa phải Copy pase là dễ đâu,
+Cứ làm theo logic thoog thuong đã,
+Đôt cháy giai doạn càng tệ
+
+-----------------
+view->folder 'errors'
+==> file view trong thư mục errors này sẽ đc mặc định hiển thị khi đường route bị lỗi nhé
+
+-------------------------------------
+
+Database, trường nào mà có thể cho null (cộng với k liên quan đến số âm), thì định nghĩa như là -1;
+
+
+--------------------
+Phân quyên f nâng cao cũng dễ ha:
+   -Tạo middle cho mình, dặt tên gì đó cũng đc, ví dụ 'Role'
+       php arisan make:middleware Role
+   -Khai báo middleware này ở trong file cấu hình: Kernel.php  ->>> kéo đến hàm routeMiddleware()
+        'role'=> \App\Http\Middleware\Role::class
+   -Code cái gì trong middleware Role,đã tạo???
+       +thêm biến role trong hàm  hanle(...., $role)
+       +Thân hàm handel(), ta cần lấy ra user đang đăng nhập, ròi so sánh
+          function handle($request, $next, $role){
+               $username = Auth::user()->username;         //Nhớ use Auth ở đầu file nhé
+               if(strpos($role, $username) === false){
+		    $request->session()->flash('msg', 'Bạn bị chặn');
+                    return redirect()->route('/index');
+               }
+              
+               return $next($request);
+          }
+
+   -Sau đó, trong web.php, chỉ chèn cái hàm ->middleware('role:admin|vnedemo')
+    ở phía sau những cái route(dduongf dẫn muốn chặn)
+
+
+
+--------------------
+    -Vấn đề phân quyền liên quan 2 yếu tố quan trọng: Id user được đưa lên thớt để xóa  (*);; Tài khaonr User đang đăng nhâp (**_)
+    
+Hiểu vi sao, cái phân quyền k cho tùy chỉnh tài khoản Admin, lại phải viết trong Controller
+chứ thầy k tạo middleware cho nó. Vì vấn đề này cần xem xét yếu tố (*): 
+    mà cái này lấy đc, dễ dàng trong Controller, chứ trong Middleware ta đang chỉ biết sử dụng Auth để lấy tài khoản đang đăg nhâp(**)
+    thôi
+
+===>Như vậy những vấn đề phân quyền, mà k liên quan đến (*), thì hoàn toàn sư dung middleware dc tốt
+
+
+
+--------------------
+Xue lí phan quyền: User thường, chi sửa đc fullanem, password cua chính họ.
+
+Thuật toán:
+   -Chưa thể dùng middleware: vì cái này còn liên quan đến , cái id cần đưa lên thớt
+   if( item_canSua->usrname != user_DangNhap && user_DangNhap != admin  ){
+	return redirect->error
+   }
+
+
+------------------------------------
+Trang error trông admin, thi làm riêng cũng đ, đạt tên là err thôi, khỏi lỗi với errors
+
+
+------------------------------------
+//Trong Model
+Khi dung Olequen, thì dngf biến $this, thay cho Room::
+ cho khỏe
+
+Nếu Route ở view báo lỗi, nhớ xem kĩ biến URL có ổn, tránh null,
+  rất khó fix, nếu biến URL bị null
+
+
+
+------------------------------------
+//Trong controller
+Chớ coi thường cái lỗi, thiếu tham số Request ở hàm Xóa,
+ Khó fix lỗi
+
+
+
+------------------------------------
+//Trong View, ddawtj name cho input giống với tên trường trong Database càng tốt
+Chớ coi thường cái lỗi, thiếu tham số Request ở hàm Xóa,
+ Khó fix lỗi
+
+--------------------------------------------------------
+Đang đến đoạn khó  là làm sao
+Unique đc đồng thời 2 column
+
+-----------------------
+Sửa Ajax: nên dùng edit theo kiểu:
+   lấy bản ghi cần sửa: $obItem   ==>  Sửa
+  ==>
+   $objItem->update();
+------------------------------------
+Trong Public, ngan cach cac bien trên đường dẫn theo dấu gạch nối.. vì để tránh trùng với đường đẫn trong admin là dấu / 
+
+-------------------------------------
+Trong Public, Cái nào sleclect ra 1 bản ghi, thì phải kiêm tra null trước khi đỏ ra view nha
+
+
+
+
+
+
+
+
+
+-----------------------------------------------
+Edit bản ghi theo 1 mảng:
+//trong model
+public function editUser($id, $arItem){
+   $objItem = User::findOrFail($id);
+
+   //cap nhat du lieu moi cho bjItem
+   $objItem->fullname = $arItem['fullname];
+   if(isset($arItem['password])){
+       $objItem->password = $arItem['password];
+   }
+
+   return $objItem->update();
+    
+} 
+
+
+//trong Controller
+public function postEdit($id, EditUserRequest $request){
+	$msg = '';
+        $fullname = trim($request->post('fullname);
+        $password = trim($request->post('password');
+	$arItem = array(
+	    'fullname'=> trim($request->post('fullname),
+        );
+
+	if($password != ''){
+            $arItem['password'] = bcrypt($password);
+        }
+        
+        if($this->mUser->editUser($id, $arItem)) $msg = 'Sua thanh cong';
+        else $msg = 'co loi xay ra';
+       
+        flash();
+        return;
+	
+}
+
+
+//////////////Update ban ghi theo mang cach 2
+$affected = DB::table('table')->where(...)->update(['confirmed' => 1]);
+
+
+
+
+
+------------------------------------------------------------
+
+
+
+

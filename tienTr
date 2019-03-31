@@ -1,0 +1,50 @@
+Doi logo
+
+Valdate file chọn phải là hình ảnh
+
+ Cau hinh file 404 public.
+
+Con admin cũng nên có trang 404
+
+Tạo cái onclick confirm custom (mẫu ở shareIt)
+
+Xu li add, súa trùng tên
+
+!!đếnen phan điền lại info Product khi mở trang Edit
+
+=---------------------
+Cần lưu lại thông tin nhân viên: đã thực hiện nhập/ xuất mặt hàng nào đó. (Dựa vào thông tin nhân viên Login) 
+Có ảnh của Lo hàng càng tốt (vi dụ cần 2 ảnh cho lô: 1 ảnh chụp toàn cảnh, 1 ảnh chụp thông tin NSX, HSD trên bao bì)
+
+------------------------
+lam xong phần lô
+Dien lai thong tin trong getEditBatch
+Chinh ảnh cho 2option: Tai anh khác lên  //  Chỉnh ảnh hiện tại
+làm cái baner, đường dẫn mục
+Thêm cái banner img
+Lam login nhé. ==> để tiến hành cho xong cái môdun này "Nền móng":
+
+Phan chia: Neu user chuyen sang Public; Ban quan tri chuyen trang admin.
+Sua vỡ table trên dien thoai
+Validate sua ảnh: chỉ cho upload định dạng ảnh =>
+Slide anh: 1 slide , chứa số lượng ảnh bất kì trong khoảng 1 đến 20:
+ Giao diện lam theo như bảng sanr phẩm, click hình nào trong slide thì chỉnh hình đó(xóa, sửa, thêm ảnh vô slide)
+Quản lí kho các ảnh nha=> Phát hiện ảnh nào đang được sử dụng, k sư dụng thì cung cấp lệnh xóa
+Tiep tuc la sua anh Slide
+Xem link bookmark để, ccó chức năng, cho phép xóa ảnh slide, không sử dụng ở hiện tại trong hệ thống.
+Đổi màu nền khung nội dung
+
+
+Quản lí nhật kí hệ thống Admin: Gồm thông tin đăng nhập(Ai login, logout? Thời điểm nào)
+                                Log những hành động đến CSDL (AI làm/ Việc gì/ thời điểm nào)
+
+Tạo biểu tượng thông báo như Fb, chứa các thông báo quan trọng của hệ thống
+
+Quản lí báo hiệu user online trong Admin 
+
+
+Quanr lis log
+
+
+
+

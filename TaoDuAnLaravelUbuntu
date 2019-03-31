@@ -1,0 +1,5 @@
+--------------Chay laravel app tren LAN
+sudo php artisan serve --host 192.168.1.101 --port 80
+--------------Chinh font neu Chorme hien thi font loi
+  sudo apt-get install ubuntu-restricted-extras  
+

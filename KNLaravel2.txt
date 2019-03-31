@@ -1,0 +1,1 @@
+---------------biến tham số dùng trong hàm route, thì ghi lại trong hàm Controller tuong ứng
