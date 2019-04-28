@@ -40,6 +40,11 @@ không cho xóa Admin, chỉ cho sửa Admin nêu chính chủ Admin đăng nh�
 
 
 
+--------------------------------------------------------------------Check Null cho Bien --------------
+
+if($objItem_User == null) return redirect()->route($this->mRoute)->with('msg', getenv('ERR'));
+
+
 
 --------------------------------------------------------------------Su dung , chen Request vao Controller
 use App\Http\Requests\ContactRequest;
@@ -102,15 +107,21 @@ use App\Http\Requests\ContactRequest;
     protected $primaryKey = "id_news";
     public $timestamps = false;
 
-    public function getAllItems(){
+   	public function getAllItems(){
     	return $this->all();
+    }
+
+    public function countGetAllItems(){
+    	return $this->count();
     }
 
    //trog Controller su dung Model ==>Ham khoi tao
    use App\Cat;
-    public function __construct(Project $mProject){
-		$this->mProject = $mProject;
-	}
+    public function __construct(Contact $mContact){
+        $this->mContact = $mContact;
+        $this->mRoute = 'admin.contact.index';
+        $this->mView = 'admin.contact.index';
+    }
 
 
 
@@ -186,8 +197,8 @@ value="{{ old('tendanhmuc') }}"
 ---------------------------------------------------------------Su dung Redirect() trong Controller thuong xuyen
         $msg = '';
     	if() $msg = 'Thêm thành công!'; 
-        else $msg = 'Có lỗi xảy ra!';
-        return redirect()->route('admin.roomtype.index')->with('msg', $msg);
+        else $msg = getenv('ERR');
+        return redirect()->route($this->mRoute)->with('msg', $msg);
 
         //Báo lỗi Item bị null
     	if($item == null) return view('errors.404'); 

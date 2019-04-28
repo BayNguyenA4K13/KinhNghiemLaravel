@@ -33,10 +33,9 @@ Quản lí kho các ảnh nha=> Phát hiện ảnh nào đang được sử dụ
 Tiep tuc la sua anh Slide
 Xem link bookmark để, ccó chức năng, cho phép xóa ảnh slide, không sử dụng ở hiện tại trong hệ thống.
 Đổi màu nền khung nội dung
-
-
 Quản lí nhật kí hệ thống Admin: Gồm thông tin đăng nhập(Ai login, logout? Thời điểm nào)
                                 Log những hành động đến CSDL (AI làm/ Việc gì/ thời điểm nào)
+
 
 Tạo biểu tượng thông báo như Fb, chứa các thông báo quan trọng của hệ thống
 
@@ -44,7 +43,46 @@ Quản lí báo hiệu user online trong Admin
 
 
 Quanr lis log
+Chuc nang tim kiem
+Chức năng tiết kiệm id sản phẩm ==> Để sau
+Tiep tuc them img_back cac page con lao
+Bôi đen cụm từ tìm kiếm
 
+Neu được hãy làm xác minh tài khoản qua email or dien thoai
 
+Làm cái xóa đồng loạt
 
+Triết lí: danh mục có id = 1, là danh mục có tên "Chưa phân loại"
 
+Triết lí: Đỗi với việc xóa danh mục, sp, và lo:  Khi xóa danh mục thì kiểm tra xem có còn sp nào đang sử dụng danh mục này. Khi xóa sp thì kiểm tra xem còn lô nào sử dụng sp này.    Nếu còn item thì k được xóa thằng cha
+
+Triết lí:
+
+Triết lí:(Danh mục -> Sp -> Lô ) Ví dụ như Lô  là cái định danh nhỏ nhất về kinh doanh, thì active của nó chính là active_kinh doanh. Còn các định danh lớn chứa nó thì active chỉ là active_hiên thị thôi. Chú ý: Nếu định danh con mà có mà nhiều hơn 1 item được active , thì tự động bật active cho định danh cha. Còn không cho phép tắt active của cha, khi con có item đang active  
+
+Triết lí: trong sp có các trường: đã bán, còn lại và Tổng item nhập => 3 đại lượng này không phụ thuộc vào nhau
+          nhật kí ==> khi 1 sản phẩm của 1 lô được bán ra thì "đã bán" tăng 1, "còn lại" thì vân bằng qty của all lô; tổng nhập vân như cũ
+
+Triết lí: Có máy ảnh nhận diện nhân viên của mình, đặt ở cửa chính ==> Nếu máy ảnh phát hiện nhân viên ra khỏi quầy ==> báo về điện thoại chủ
+
+Cung cap ckeditr and ck finder cho dđánh chi tiết sản phảm
+Xử lí Null cho ObjItem   , ở tất cả các Controller, mà có lấy 1 item  ==> fix den SlideController
+Có thời gian, làm chưc năng xác thực email, cũng giống như Quên mật khẩu
+
+xem lại withInput trong addProduct
+
+nhẫn vô button toogle km, thì hiện popup custom  confim
+
+lam them login= fb
+
+Xem lại lỗi chỉnh sửa toogle role
+
+Xóa chức năng Sửa user, vì khong cần thiết (đã xó chưc năng quên mat khau)
+
+Làm sao để, phát hiện, khi Đơn vị sĩ khác Null,thì kéo theo giá DVSNN cung khac null
+
+Triet Li: khi xuất 1 hàng: nếu hàng đó thuộc lô(có active = 1 thì không sao), nhưng active = 0. Thì nhân viên xem kĩ lại hàng(nsx, hsd), vì admin không cho bán nó(do có  vấn đề)
+
+mai làm cái xuất hàng nha
+
+Sau đó , làm vị trí hàng
