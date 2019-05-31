@@ -16,6 +16,12 @@ Route::namespace('Public')->group(function(){
     RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
 
+active
+$ sudo a2enmod rewrite
+$ sudo chmod -R 777 storage
+$ sudo chmod -R 777 bootstrap
+$ sudo service apache2 restart
+
 -------------------------------------------
 
 Route::pattern('id', '([0-9]*)');

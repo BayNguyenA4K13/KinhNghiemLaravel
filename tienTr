@@ -86,3 +86,37 @@ Triet Li: khi xuất 1 hàng: nếu hàng đó thuộc lô(có active = 1 thì k
 mai làm cái xuất hàng nha
 
 Sau đó , làm vị trí hàng
+
+
+in cac thong so ItemHoaDon + kemf ItemExport thuoc hoa don, o trang index
+
+Còn việc xử lí tính toán Xuất hàng, sao cho đúng như với thông tin demo
+
+Taoj View có số lượng dòng Sp, như đã gửi lên
+
+
+Kiểm tra kĩ hơn, về: +cho phép bán giá sĩ, hay lẻ  
+                     +Kiểm tra số lượng hàng trong kho, còn đủ để xuất
+   ===> cả hai cần check và  hiện thông báo real_time , khi nhập masp va soluong luôn (trước khi nhấn button Xuất) ==> cho tiện
+
+
+làm cái xóa hóa đơn ==> duuyeet export liien quan xóa luôn
+
+
+Index Export:Nếu được hưởng giá sĩ, thì in giá sĩ, DVSNN ra, bật xanh cái toggo ==> ngược lai thì ẩn 2 thông tin ni luôn, bật đỏ cái toggo
+
+Xử lí lại CSS cho đẹp khi ajax INfor san pham ra ỏ Export. không thì quay lại table 100%
+
+TRIET LI:Đặt khoảng thời gian, active khuyễn mãi, cho 1 sản phẩm. Nếu mua hàng trong khaong thơi gian khuyen mai. Mới được khuyễn mãi
+Trong hóa đơn , xuất. Nếu 1 sản phẩm, đang có active khuyễn mãi. Thì in hóa đơn, kèm thông tin km đó. Để quảng cáo luôn. CŨng để khách hàng kiểm tra xem mình có đủ điều kiện khuyến mãi không???
+
+-Lưu giữ lại được cái value đã nhập tại Export, nếu có lỗi nhập  ==> thì càng tốt
+
+Trong export: bỏ bớt 2 cột DVSLL and GIA SI =>  khi nhấn vô tooggo "KHUYEN MAI" or "KICH HOAT GIA SI", thì hiện thông tin chi tiết
+
+
+TRIET LI: NEU HUONG GIA NAO, THI HIEN THI GIA DO, TRONG HOA DON
+
+
+-Dung insertNext, để ajaxThemDong va XoaDong. mà vânx giữ input đã nhâpj.
+Timf hiểu đổ bóng cho image Active. Cái nào cho nhấn thì đổ bóng, khong thì thôi

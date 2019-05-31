@@ -1,0 +1,26 @@
+Put  ==> dùng định dạng form-urlencode thay cho  form-data
+
+----------------------------Git Learn
+*git checkout -b "add_api_links_for_resource"    ==>Taoj 1 brand cua minh, chú ý dùng khi chắc chắn mình đang đứng ở master branch, nếu chưa thì phải "checkout master" để về master 
+
+* xài "git diff" để xem lại sự thay đổi, trên branch mới tạo
+
+*  git config core.fileMode false   ==> Thông tin hiển thị khi "git status", dễ nhìn hơn
+
+* git checkout ten_file   =>  Loại bỏ sự thay đôi của file đó, 
+
+* git add ten_file     ==> đưa file có sự thay đổi, mong muốn, vào danh sách sẽ được ghi nhận bởi lệnh "commit" ; chú ý: file có sự thay đổi, nhưng không nằm trong danh sách add, thì commit sẽ không ghi nhận sự thay đổi của file đó, trong project
+
+* git commit -m "msg"
+
+* git log   ====> Xem lại các commit của mình va những người khác trên project
+
+* "git checkout master"  and "git pull"  ===> rẽ qua master và lấy code master mới nhất về máy local
+
+* git rebase master branch_name    ==> chuyển gốc commit của branch_name làm commit mới nhất cho master (có merge code trong quá trình chuyển)
+
+* git status
+
+* git push origin brand_name   => upcode lên cloud lên branch của minh (branch_name )
+
+

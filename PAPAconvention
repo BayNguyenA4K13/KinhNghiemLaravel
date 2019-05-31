@@ -1,0 +1,1 @@
+ return response()->json(['success'=>true, 'message'=>'Thêm link thành công', 'data'=>json_encode([])]);
