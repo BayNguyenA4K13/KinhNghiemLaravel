@@ -10,16 +10,25 @@ Route::namespace('Public')->group(function(){
 
 ---------------------------------------------------------------
 
+sudo php artisan serve --host 192.168.1.101 --port 80
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteRule ^storage/ - [L]
     RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
 
-active
+setup after clone, + active
+composer install
+
+sudo chown -R $USER:www-data storage
+sudo chown -R $USER:www-data bootstrap/cache
+
+
+$ sudo chmod -R 775 storage
+$ sudo chmod -R 775 bootstrap
+
 $ sudo a2enmod rewrite
-$ sudo chmod -R 777 storage
-$ sudo chmod -R 777 bootstrap
 $ sudo service apache2 restart
 
 -------------------------------------------
@@ -163,7 +172,7 @@ $filePath = storage_path('app/files/'.$objItem_Room->picture);
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
-            @foreach ($errors->all() as $error)
+            @ ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
         </ul>

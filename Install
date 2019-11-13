@@ -1,0 +1,39 @@
+**Cai Systemback: 
+   Text: https://ubuntuforums.org/showthread.php?t=2331106
+   Video: https://www.youtube.com/watch?v=jWvq6X-XrPk
+
+**Cai JDK8
+   Text: http://tipsonubuntu.com/2016/07/31/install-oracle-java-8-9-ubuntu-16-04-linux-mint-18/
+   Text ngon hon: https://www.linode.com/docs/development/java/install-java-on-ubuntu-16-04/
+   Video: https://www.youtube.com/watch?v=OjWxuayhgXg
+**Cai Jdk + Eclipse 1 lan: khuyen khich
+   Video: https://www.youtube.com/watch?v=BW2G1vA-Reo
+
+***Cai Vituar Doamin:
+   Text:https://viblo.asia/p/tao-virtual-hosts-don-gian-tren-ubuntu-gGJ59WVDZX2
+   Kích hoạt .Htaccess: john@doe:~$  sudo a2enmod rewrite
+                         john@doe:~$  sudo service apache2 reload
+
+**Gỡ cài đặt full: 
+    Text:https://www.howtoinstall.co/en/ubuntu/xenial/vlc?action=remove
+        sudo apt-get remove vlc
+        sudo apt-get remove --auto-remove vlc
+        sudo apt-get purge vlc
+        sudo apt-get purge --auto-remove vlc
+**Cai android studio:
+      text: https://www.linuxbabe.com/ubuntu/install-android-studio-ubuntu-16-04
+
+**Cai Git:
+  text: https://www.thegeekdiary.com/how-to-install-git-on-ubuntu-16-04/
+
+**Clean way:
+  https://itsfoss.com/free-up-space-ubuntu-linux/
+
+**intall PlayonLinux+Wine to play Lien Minh Huyen THoai:
+   Video: https://www.youtube.com/watch?v=Atfix4mK5Qg
+
+**Install Nodejs and NPM
+  Text: https://tecadmin.net/install-latest-nodejs-npm-on-ubuntu/
+
+**Video getting start React with Laravel
+  Youtube: https://www.youtube.com/watch?v=1RPTCjnv7X8&list=PLTXFz3WKxvNJZo1T0-ypVBWD0MfJtshav&index=2
